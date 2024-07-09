@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Restaurante.Context;
+using Restaurante.Repositories;
+using Restaurante.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = new ConfigurationBuilder()
@@ -10,6 +12,9 @@ var configuration = new ConfigurationBuilder()
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddTransient<IHamburgerRepository, HamburgerRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 

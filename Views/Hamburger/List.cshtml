@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Restaurante.Models.Hamburger>
+
+@{
+    ViewData["Title"] = "Burger List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HamburgerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LongDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageThumbURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFavorite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HamburgerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    <img src="@Html.DisplayFor(modelItem => item.ImageURL)" height=100 width=100></img>
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageThumbURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFavorite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HamburgerID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HamburgerID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HamburgerID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
