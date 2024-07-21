@@ -11,6 +11,7 @@ namespace Restaurante.Context {
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Hamburger> Hamburgers { get; set; }
+        public DbSet<CartShopItem> CartShopItems { get; set; }
 
     }
 }

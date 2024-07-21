@@ -66,5 +66,7 @@ namespace Restaurante.Models {
         public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
 
+        /* ----- */
+
     }
 }
